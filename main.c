@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:51:27 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/04/18 18:51:29 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/04/19 21:03:20 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,17 @@ int	main(int argc, char **argv)
 		printf("El stack no esta ordenado e intentaremos resolverlo\n");
 		if (a.len == 2)
 			sort_two(&a);
-		if (a.len == 3)
+		else if (a.len == 3)
 			sort_three(&a);
-		if (a.len == 4)
-			sort_four(&a);
-		if (a.len == 5)
-			sort_five(&a);
-		//resolver +5
+		else if (a.len == 4)
+			sort_four(&a, &b);
+		else if (a.len == 5)
+			sort_five(&a, &b);
+		else if (a.len > 5 && a.len <= 100)
+			sort_bigs(&a, &b, 4);
+		else if (a.len > 100)
+			sort_bigs(&a, &b, 8);
+		//search_best_rotation_dir(6, &a);
 	}
 	else
 		printf("El stack esta ordenado y no hago nada\n");

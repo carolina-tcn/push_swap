@@ -6,14 +6,14 @@
 #    By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 18:50:52 by ctacconi          #+#    #+#              #
-#    Updated: 2024/04/18 18:50:55 by ctacconi         ###   ########.fr        #
+#    Updated: 2024/04/19 20:54:48 by ctacconi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=push_swap
 
 SRC= main.c check_args.c utils.c stack.c swap.c push.c rotate.c reverse_rotate.c sort.c \
-sort_utils.c 
+sort_utils.c sort_bigs.c 
 
 OBJ=$(SRC:.c=.o)
 
