@@ -33,7 +33,8 @@ void move_in_chunks_to_b(t_stack *a, t_stack *b, int num_chunks)
 		printf("El indice limite de este chunk es: %d\n", chunk_idx_limit);
 		while (pieces_to_move && a->len)
 		{
-			if (a->first->index <= chunk_idx_limit){
+			if (a->first->index <= chunk_idx_limit)
+			{
 				pb(a, b);
 				pieces_to_move--;
 			}
@@ -45,16 +46,32 @@ void move_in_chunks_to_b(t_stack *a, t_stack *b, int num_chunks)
 		i++;
 	}
 	while(a->len)
+	{
+		printf("entro en el bucle del pico restante\n");
 		pb(a, b);
+	}
 	//printf("A\n");
 	//print_stack(a);
 	//printf("B\n");
 	//print_stack(b);
-
+//??? realmente pieces to move no haria falta???
 }
 
 void sort_bigs(t_stack *a, t_stack *b, int num_chunks)
 {
-	move_in_chunks_to_b(a, b, num_chunks);
+	int index_to_move;
 
+	move_in_chunks_to_b(a, b, num_chunks);
+	index_to_move = b->len;
+
+	while (b->len)
+	{
+		move_index_x_to_top(index_to_move, b);
+		pa(b, a);
+		index_to_move--;
+	}
+//	printf("A\n");
+//	print_stack(a);
+//	printf("B\n");
+//	print_stack(b);
 }
