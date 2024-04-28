@@ -6,12 +6,11 @@
 /*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:57:23 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/04/18 18:57:25 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/04/25 18:01:20 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	is_digit(char c)
 {
@@ -46,7 +45,7 @@ int	ft_strncmp(char *s1, char *s2, int n)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	int	res;
 	int	sign;
@@ -55,8 +54,6 @@ int	ft_atoi(const char *str)
 	res = 0;
 	sign = 1;
 	i = 0;
-	//while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-	//	i++;
 	if (str[i] == '-')
 	{
 		sign = -1;
@@ -68,4 +65,13 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (res * sign);
+}
+
+void	add_elements(t_element *add_element, t_element *tmp, char **argv, int i)
+{
+	add_element->num = ft_atoi(argv[i]);
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = add_element;
+	add_element->next = NULL;
 }

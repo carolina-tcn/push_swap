@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:56:11 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/04/18 18:56:13 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:27:54 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void	move_rotate(t_stack *stack)
 	}
 	tmp = stack->first;
 	tmp2 = stack->first;
-	stack->first = stack->first->next;	
+	stack->first = stack->first->next;
 	while (tmp)
 	{
 		if (!tmp->next)
-			break ; 
+			break ;
 		tmp = tmp->next;
 	}
 	tmp->next = tmp2;

@@ -6,72 +6,62 @@
 /*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:46:55 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/04/19 21:03:06 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/04/25 18:39:13 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// The first mision is mover el primer chunk
-// si tengo 100 piezas y llamo a mover en 4 chunks, el primer chunk sera 
-// hasta la pieza con index 25, y movere en este caso 25 piezas
-void move_in_chunks_to_b(t_stack *a, t_stack *b, int num_chunks)
+void	while_a(t_stack *a, t_stack *b)
 {
-	int chunk_size;
-	int chunk_idx_limit;
-	int pieces_to_move;
-	int i;
-
-	chunk_size = a->len / num_chunks;
-	chunk_idx_limit = chunk_size;
-	pieces_to_move = chunk_size;
-	i = 0;
-	while(i < num_chunks)
-	{
-		printf("en el chunk %d:\n", i + 1);
-		printf("en este chunk tengo que mover %d\n", pieces_to_move);
-		printf("El indice limite de este chunk es: %d\n", chunk_idx_limit);
-		while (pieces_to_move && a->len)
-		{
-			if (a->first->index <= chunk_idx_limit)
-			{
-				pb(a, b);
-				pieces_to_move--;
-			}
-			ra(a);
-		}
-		//Tengo que actualizar cosas
-		pieces_to_move = chunk_size;
-		chunk_idx_limit += pieces_to_move;
-		i++;
-	}
-	while(a->len)
-	{
-		printf("entro en el bucle del pico restante\n");
+	while (a->len)
 		pb(a, b);
-	}
-	//printf("A\n");
-	//print_stack(a);
-	//printf("B\n");
-	//print_stack(b);
-//??? realmente pieces to move no haria falta???
 }
 
-void sort_bigs(t_stack *a, t_stack *b, int num_chunks)
+void	move_in_chunks_to_b(t_stack *a, t_stack *b, int num_chunks)
 {
-	int index_to_move;
+	t_chunk	c_data;
+
+	c_data.chunk_size = a->len / num_chunks;
+	c_data.chunk_idx_limit = c_data.chunk_size;
+	c_data.pieces_to_move = c_data.chunk_size;
+	c_data.i = 0;
+	while (c_data.i++ < num_chunks)
+	{
+		while (c_data.pieces_to_move && a->len)
+		{
+			if (a->first->index <= c_data.chunk_idx_limit)
+			{
+				pb(a, b);
+				if (which_chunk_part(b, c_data.chunk_size,
+						c_data.chunk_idx_limit) == 1)
+					rb(b);
+				c_data.pieces_to_move--;
+			}
+			else
+				ra(a);
+		}
+		c_data.pieces_to_move = c_data.chunk_size;
+		c_data.chunk_idx_limit += c_data.pieces_to_move;
+	}
+	while_a(a, b);
+}
+
+void	sort_bigs(t_stack *a, t_stack *b, int num_chunks)
+{
+	int	index_to_move;
 
 	move_in_chunks_to_b(a, b, num_chunks);
 	index_to_move = b->len;
-
 	while (b->len)
 	{
-		move_index_x_to_top(index_to_move, b);
+		move_index_x_to_top_of_b(index_to_move, b, a);
 		pa(b, a);
 		index_to_move--;
+		if ((a->len >= 2) && a->first->next->index == index_to_move)
+		{
+			sa(a);
+			index_to_move--;
+		}
 	}
-//	printf("A\n");
-//	print_stack(a);
-//	printf("B\n");
-//	print_stack(b);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 18:56:23 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/04/19 20:46:50 by ctacconi         ###   ########.fr       */
+/*   Created: 2024/04/25 16:23:04 by ctacconi          #+#    #+#             */
+/*   Updated: 2024/04/25 16:23:12 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,32 @@ void	sort_two(t_stack *a)
 
 void	sort_three(t_stack *a)
 {
-	if (a->first->index == 2 && a->first->next->index == 1 && a->first->next->next->index == 3)
+	if (a->first->index == 2 && a->first->next->index == 1
+		&& a->first->next->next->index == 3)
 		sa(a);
-	else if (a->first->index == 3 && a->first->next->index == 2 && a->first->next->next->index == 1)
+	else if (a->first->index == 3 && a->first->next->index == 2
+		&& a->first->next->next->index == 1)
 	{
 		sa(a);
 		rra(a);
 	}
-	else if (a->first->index == 3 && a->first->next->index == 1 && a->first->next->next->index == 2)
+	else if (a->first->index == 3 && a->first->next->index == 1
+		&& a->first->next->next->index == 2)
 		ra(a);
-	else if (a->first->index == 1 && a->first->next->index == 3 && a->first->next->next->index == 2)
+	else if (a->first->index == 1 && a->first->next->index == 3
+		&& a->first->next->next->index == 2)
 	{
 		sa(a);
 		ra(a);
 	}
-	else if (a->first->index == 2 && a->first->next->index == 3 && a->first->next->next->index == 1)
+	else if (a->first->index == 2 && a->first->next->index == 3
+		&& a->first->next->next->index == 1)
 		rra(a);
 }
 
 void	sort_four(t_stack *a, t_stack *b)
 {
-	move_index_x_to_top(1, a);
+	move_index_x_to_top_of_a(1, a);
 	pb(a, b);
 	assign_index(a);
 	sort_three(a);
@@ -48,9 +53,9 @@ void	sort_four(t_stack *a, t_stack *b)
 
 void	sort_five(t_stack *a, t_stack *b)
 {
-	move_index_x_to_top(1, a);
+	move_index_x_to_top_of_a(1, a);
 	pb(a, b);
-	move_index_x_to_top(2, a);
+	move_index_x_to_top_of_a(2, a);
 	pb(a, b);
 	assign_index(a);
 	sort_three(a);

@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:51:41 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/04/18 18:51:43 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:33:11 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	move_push(t_stack *src, t_stack *dst)
 		tmp = src->first;
 		src->first = src->first->next;
 		dst->first = tmp;
-		dst->first->next = tmp2; 
+		dst->first->next = tmp2;
 		src->len--;
 		dst->len++;
 	}

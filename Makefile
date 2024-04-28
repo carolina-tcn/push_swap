@@ -6,7 +6,7 @@
 #    By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 18:50:52 by ctacconi          #+#    #+#              #
-#    Updated: 2024/04/19 20:54:48 by ctacconi         ###   ########.fr        #
+#    Updated: 2024/04/25 16:39:04 by ctacconi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,35 +23,23 @@ CFLAGS= -Wall -Wextra -Werror
 
 INCLUDE= Makefile push_swap.h
 
-#LIB=ar rcs
-
 RM=rm -f
 
-# Metodo implicito
+# Implicit method
 %.o: %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-
-# Mis metodos
-#all: make_libs $(NAME)
+# My methods
 all:	$(NAME)
-
-#make_libs:
-#	Make -C libft/
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	#gcc -Wall -Wextre -Werror main.c -o push_swap
-	#cp libft/libft.a $(NAME)
-	#$(LIB) $(NAME) $(OBJ)
-
+	
 clean:
 	$(RM) $(OBJ)
-#	Make -C libft/ clean
 
 fclean: clean
 	$(RM) $(NAME)
-#	Make -C libft/ fclean
 
 re: fclean all
 

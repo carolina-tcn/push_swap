@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:57:12 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/04/18 18:57:13 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/04/24 22:54:02 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,14 @@ void	ss(t_stack *a, t_stack *b)
 
 void	move_swap(t_stack *stack)
 {
-	if (stack->len < 2)
-	{
-		printf("No hago nada por que hay menos de dos piezas\n");
-		return ;
-	}
-	
 	t_element	*first;
 	t_element	*second;
-	
+
+	if (stack->len < 2)
+		return ;
 	first = stack->first;
 	second = stack->first->next;
-	stack->first = second;//el stack apunta al segundo elemento
-	first->next = second->next;//el primero apunta al tercero
-	second->next = first;//el segundo apunta al primero
+	stack->first = second;
+	first->next = second->next;
+	second->next = first;
 }

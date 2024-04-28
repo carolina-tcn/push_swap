@@ -6,7 +6,7 @@
 /*   By: ctacconi <ctacconi@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 18:55:59 by ctacconi          #+#    #+#             */
-/*   Updated: 2024/04/18 18:56:01 by ctacconi         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:24:05 by ctacconi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,14 @@ void	move_rev_rotate(t_stack *stack)
 	if (stack->len < 2)
 		return ;
 	if (stack->len < 3)
+	{
 		move_swap(stack);
+		return ;
+	}
 	tmp = stack->first;
-	while (tmp && tmp->next->next) //sino seria un seg
+	while (tmp && tmp->next->next)
 		tmp = tmp->next;
-	tmp->next->next = stack->first; 
+	tmp->next->next = stack->first;
 	stack->first = tmp->next;
 	tmp->next = NULL;
 }
